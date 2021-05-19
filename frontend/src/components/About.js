@@ -31,23 +31,22 @@ const StyledAbout = styled.div`
   }
 `;
 
-export default function About() {
+export default function About({ lang }) {
   return (
     <StyledAbout>
-      <h2>About me</h2>
+      <h2>{lang === "nl" ? "Over mij" : "About me"}</h2>
       <h3>Full Stack Developer</h3>
-
       <div>
-        <p>Geboren</p>
+        <p>{lang === "nl" ? "Geboren" : "Dob."}</p>
         <p>15/07/1990</p>
       </div>
       <div>
-        <p>Woonplaats</p>
+        <p>{lang === "nl" ? "Woonplaats" : "Res."}</p>
         <p>Amsterdam</p>
       </div>
       <div>
-        <p>Talen</p>
-        <p>Nederlands, Engels</p>
+        <p>{lang === "nl" ? "Talen" : "Lang."}</p>
+        <p>{lang === "nl" ? "Nederlands, Engels" : "Dutch, English"}</p>
       </div>
       <Tech></Tech>
     </StyledAbout>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import profilePicture from "../img/profielfoto.jpeg";
+import profilePicture from "../img/profielfoto.jpg";
 import Tech from "./Tech";
 import About from "./About";
 
@@ -17,7 +17,7 @@ const StyledBanner = styled.div`
 
   .banner-title {
     margin: 0 0 0 2rem;
-    font-size: 4rem;
+    font-size: 3rem;
   }
   h3 {
     color: white;
@@ -46,7 +46,7 @@ const StyledBanner = styled.div`
     color: #ff0;
     font-size: 6rem;
     text-decoration-color: black;
-    top: 50px;
+    top: 450px;
   }
 
   @media (max-width: 1024px) {
@@ -57,7 +57,7 @@ const StyledBanner = styled.div`
       font-size: 3rem;
     }
     .banner-title {
-      font-size: 3rem;
+      font-size: 2rem;
     }
   }
   @media (max-width: 498px) {
@@ -72,8 +72,7 @@ const StyledBanner = styled.div`
   }
 `;
 
-export default function Banner({ width }) {
-  console.log(width);
+export default function Banner({ width, lang }) {
   const desktop = width <= 768 ? "hidden" : "";
   const mobile = width > 768 ? "hidden" : "";
   return (
@@ -81,25 +80,25 @@ export default function Banner({ width }) {
       <StyledBanner className={mobile}>
         <img alt="profielfoto jim van de ven" src={profilePicture}></img>
         <h1>Jim van de Ven</h1>
-        <About></About>
+        <About lang={lang}></About>
       </StyledBanner>
       <StyledBanner className={desktop}>
         <img alt="profielfoto jim van de ven" src={profilePicture}></img>
-
-        <h2 className="banner-title">About me</h2>
+        <h2 className="banner-title">
+          {lang === "nl" ? "Over mij" : "About me"}
+        </h2>
         <h3>Full Stack Developer</h3>
-
         <div>
-          <p>Geboren</p>
+          <p>{lang === "nl" ? "Geboren" : "Dob."}</p>
           <p>15/07/1990</p>
         </div>
         <div>
-          <p>Woonplaats</p>
+          <p>{lang === "nl" ? "Woonplaats" : "Res."}</p>
           <p>Amsterdam</p>
         </div>
         <div>
-          <p>Talen</p>
-          <p>Nederlands, Engels</p>
+          <p>{lang === "nl" ? "Talen" : "Lang."}</p>
+          <p>{lang === "nl" ? "Nederlands, Engels" : "Dutch, English"}</p>
         </div>
         <Tech></Tech>
       </StyledBanner>

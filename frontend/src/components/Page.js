@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     background-color: #edf2f7;
     box-sizing: border-box;
-    font-size: 16px;;
+    font-size: 18px;;
   }
 
   *, *:before, *:after {
@@ -82,6 +82,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const InnerStyles = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin: 0 auto;
@@ -99,6 +100,17 @@ const InnerStyles = styled.div`
       width: 100%;
     }
   }
+  button {
+    background-color: #ff0;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    top: 10px;
+    z-index: 10;
+    border-radius: 5px;
+    font-weight: bold;
+  }
 `;
 
 export default function Page() {
@@ -107,12 +119,28 @@ export default function Page() {
     setWidth(window.innerWidth);
   });
 
+  // if (!localStorage.getItem("lang")) {
+  //   localStorage.setItem("lang", "nl");
+  // }
+  // function toggleLanguage() {
+  //   localStorage.getItem("lang") === "nl"
+  //     ? localStorage.setItem("lang", "en")
+  //     : localStorage.setItem("lang", "nl");
+
+  // }
+
+  const [lang, setLang] = useState("en");
+  function toggleLanguage() {
+    lang === "nl" ? setLang("en") : setLang("nl");
+  }
+
   return (
     <div>
       <GlobalStyles />
       <InnerStyles>
-        <Banner width={width}></Banner>
-        <Cv width={width}></Cv>
+        <button onClick={toggleLanguage}>{lang === "nl" ? "nl" : "en"}</button>
+        <Banner width={width} lang={lang}></Banner>
+        <Cv width={width} lang={lang}></Cv>
       </InnerStyles>
     </div>
   );

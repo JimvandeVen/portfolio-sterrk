@@ -6,26 +6,31 @@ const StyledSummary = styled.div`
   }
 `;
 
-export default function Summary() {
+export default function Summary({ lang }) {
   return (
     <StyledSummary>
-      <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-        ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-        quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
-      </p>
-      <p>
-        Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras
-        dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
-        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-        enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
-        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-        imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
-        ultricies nisi. Nam eget dui.
-      </p>
+      {lang === "en" && (
+        <p>
+          Creative Web developer with a solid background in <b>JavaScript</b>.
+          Currently expanding my knowledge in backend, specificly <b>php</b>{" "}
+          (Laravel). I'm a creative webdeveloper with schooling in <b>UI/UX</b>{" "}
+          design and who centers my work around the end user. I work well in
+          teams with different disciplines and not afraid to give my opinion and
+          have a <b>professional</b> discussion, leading to a better product.
+        </p>
+      )}
+      {lang === "nl" && (
+        <p>
+          Creatieve web developer met een solide achtergrond in{" "}
+          <b>JavaScript</b>. Momenteel ben ik bezig om mijn kennis in backend te
+          vergroten, met name in <b>php</b> (laravel). Ik heb oog voor{" "}
+          <b>UX/UI</b> design en centreer mijn werk op de eindgebruiker. Door
+          mijn opleiding ben ik goed in het werken in teams met verschillende
+          disciplines en niet bang om mijn mijn mening te geven en een{" "}
+          <b>professionele</b> discussie te voeren, om tot een beter product te
+          komen.
+        </p>
+      )}
     </StyledSummary>
   );
 }

@@ -1,4 +1,14 @@
+import { gql, useQuery } from "@apollo/client";
 import styled from "styled-components";
+
+export const ALL_TAGS_QUERY = gql`
+  query ALL_TAGS_QUERY {
+    allTags {
+      id
+      name
+    }
+  }
+`;
 
 const StyledTech = styled.div`
   display: flex;
@@ -19,15 +29,20 @@ const StyledTech = styled.div`
 `;
 
 export default function Tech() {
+  const { data, error, loading } = useQuery(ALL_TAGS_QUERY);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    console.error(error);
+  }
   return (
     <>
-      <h2 className="banner-title">Tech</h2>
+      <h2 className="banner-title">Skills</h2>
       <StyledTech>
-        <span>Javascript</span>
-        <span>React.js</span>
-        <span>Laravel</span>
-        <span>Node</span>
-        <span>TypeScript</span>
+        {data.allTags.map((tag) => {
+          return <span key={tag.id}>{tag.name}</span>;
+        })}
       </StyledTech>
     </>
   );

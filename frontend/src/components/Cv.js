@@ -18,9 +18,17 @@ const StyledCv = styled.div`
   h4 {
     font-weight: 400;
   }
+  .sideline {
+    background-color: black;
+    height: inherit;
+    width: 2px;
+    position: absolute;
+    transform: translateX(-1000%);
+    height: 100%;
+  }
 `;
 
-export default function Cv({ width }) {
+export default function Cv({ width, lang }) {
   const desktop = width <= 768 ? "hidden" : "";
   const mobile = width > 768 ? "hidden" : "";
 
@@ -28,16 +36,16 @@ export default function Cv({ width }) {
     <>
       <StyledCv className={desktop}>
         <h1>Jim van de Ven</h1>
-        <Summary></Summary>
-        <Educations></Educations>
-        <Employers></Employers>
-        <Projects></Projects>
+        <Summary lang={lang}></Summary>
+        <Educations lang={lang}></Educations>
+        <Employers lang={lang}></Employers>
+        <Projects lang={lang}></Projects>
       </StyledCv>
       <StyledCv className={mobile}>
-        <Summary></Summary>
-        <Educations></Educations>
-        <Employers></Employers>
-        <Projects></Projects>
+        <Summary lang={lang}></Summary>
+        <Educations lang={lang}></Educations>
+        <Employers lang={lang}></Employers>
+        <Projects lang={lang}></Projects>
       </StyledCv>
     </>
   );

@@ -5,25 +5,28 @@ const StyledEmployer = styled.li`
 
   h4 {
     font-weight: bold;
-  }
-
-  span {
-    background-color: black;
-    height: inherit;
-    width: 2px;
-    position: absolute;
-    transform: translateX(-1000%);
-    height: 100%;
+    font-size: 1.3rem;
   }
 `;
 
-export default function Employer() {
+export default function Employer({ employer, lang }) {
+  function endDate(lang, employer) {
+    if (employer.endDate) {
+      return employer.endDate;
+    }
+    if (lang === "nl") {
+      return "heden";
+    }
+    return "present";
+  }
   return (
     <StyledEmployer>
-      <span></span>
-      <h4>Sterrk Detachering</h4>
-      <h3>01-04-2021 - heden</h3>
-      <p>Iets over sterk detachering vertellen blabla</p>
+      <span className="sideline"></span>
+      <h4>{employer.name}</h4>
+      <h3>
+        {employer.startDate} - {endDate(lang, employer)}
+      </h3>
+      <p>{lang === "en" ? employer.description : employer.descriptionNl}</p>
     </StyledEmployer>
   );
 }

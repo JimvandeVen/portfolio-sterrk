@@ -25,25 +25,25 @@ const StyledProject = styled.li`
     border-radius: 5px;
     font-weight: bold;
     padding: 2px 5px 2px 5px;
-    margin-top: 0.5rem;
     margin-right: 0.2rem;
   }
 `;
-export default function Project() {
+export default function Project({ project, lang }) {
   return (
     <StyledProject>
       <span className="sideline"></span>
-      <h3>Laadpalen App</h3>
-      <p>
-        Together with another student we created an Application in which you can
-        report problems with charging stations for EVs
-      </p>
+      <h3>
+        {project.year} {project.name}
+      </h3>
+      <p>{lang === "en" ? project.description : project.descriptionNl}</p>
       <div className="techContainer">
-        <span className="tech">Javascript</span>
-        <span className="tech">React.js</span>
-        <span className="tech">Laravel</span>
-        <span className="tech">Node</span>
-        <span className="tech">TypeScript</span>
+        {project.tags.map((tag) => {
+          return (
+            <span key={tag.id} className="tech">
+              {tag.name}
+            </span>
+          );
+        })}
       </div>
     </StyledProject>
   );

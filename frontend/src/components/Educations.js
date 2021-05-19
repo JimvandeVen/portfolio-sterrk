@@ -14,10 +14,10 @@ const StyledEducations = styled.ul`
   }
 `;
 
-export default function Educations() {
+export default function Educations({ lang }) {
   return (
     <StyledEducations>
-      <h2>Opleiding</h2>
+      <h2>{lang === "en" ? "Education" : "Opleiding"}</h2>
       <Education></Education>
     </StyledEducations>
   );
