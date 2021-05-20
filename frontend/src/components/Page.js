@@ -119,16 +119,6 @@ export default function Page() {
     setWidth(window.innerWidth);
   });
 
-  // if (!localStorage.getItem("lang")) {
-  //   localStorage.setItem("lang", "nl");
-  // }
-  // function toggleLanguage() {
-  //   localStorage.getItem("lang") === "nl"
-  //     ? localStorage.setItem("lang", "en")
-  //     : localStorage.setItem("lang", "nl");
-
-  // }
-
   const [lang, setLang] = useState("en");
   function toggleLanguage() {
     lang === "nl" ? setLang("en") : setLang("nl");
@@ -138,7 +128,7 @@ export default function Page() {
     <div>
       <GlobalStyles />
       <InnerStyles>
-        <button onClick={toggleLanguage}>{lang === "nl" ? "nl" : "en"}</button>
+        <button onClick={toggleLanguage}>{lang === "nl" ? "en" : "nl"}</button>
         <Banner width={width} lang={lang}></Banner>
         <Cv width={width} lang={lang}></Cv>
       </InnerStyles>
